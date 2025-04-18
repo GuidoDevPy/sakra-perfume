@@ -1,0 +1,70 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-black text-white py-12">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold mb-6">SAKRA</h3>
+        <p class="text-gray-300 mb-4">Perfumes exclusivos que capturan la esencia de momentos inolvidables.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-white hover:text-skin">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10V8a2 2 0 012-2h4a2 2 0 012 2v2m-6 0h6m-6 0v6m0 0h6m-6 0a2 2 0 01-2-2v-2m8 0v4a2 2 0 01-2 2h-2" />
+            </svg>
+          </a>
+          <a href="#" class="text-white hover:text-skin">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </a>
+          <a href="#" class="text-white hover:text-skin">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-medium mb-6">Enlaces rápidos</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-300 hover:text-skin transition-colors">Colección</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-skin transition-colors">Historia</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-skin transition-colors">Sobre nosotros</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-skin transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="text-lg font-medium mb-6">Suscríbete</h3>
+        <p class="text-gray-300 mb-4">Recibe nuestras novedades y ofertas exclusivas.</p>
+        <form class="flex">
+          <input 
+            type="email" 
+            placeholder="Tu email" 
+            class="px-4 py-2 w-full bg-gray-800 text-white border-0 focus:outline-none focus:ring-2 focus:ring-skin"
+          />
+          <button 
+            type="submit" 
+            class="px-4 py-2 bg-skin text-black hover:bg-skin/80 transition-colors"
+          >
+            →
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400">© {currentYear} SAKRA. Todos los derechos reservados.</p>
+      <div class="mt-4 md:mt-0">
+        <ul class="flex space-x-6">
+          <li><a href="#" class="text-gray-400 hover:text-skin text-sm">Privacidad</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-skin text-sm">Términos</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-skin text-sm">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

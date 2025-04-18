@@ -1,0 +1,173 @@
+---
+const fragrances = [
+  {
+    id: 1,
+    name: "MWAY",
+    description: "Notas de bergamota, jazmín y vainilla",
+    price: "150.000",
+    image: "public/images/sakra-image1.jpg",
+    details: {
+      top: "Bergamota, Jazmín, Vainilla",
+      middle: "--, --, --",
+      base: "--, --, --"
+    }
+  },
+  {
+    id: 2,
+    name: "TGIRL",
+    description: "Notas de mandarina, limón y magnolia",
+    price: "100.000",
+    image: "public/images/sakra-image2.jpg",
+    details: {
+      top: "Mandarina, Limón, Magnolia",
+      middle: "--, --, --",
+      base: "--, --, --"
+    }
+  },
+  {
+    id: 3,
+    name: "HBWOMAN",
+    description: "Notas de mandarina, ciruela y sándalo",
+    price: "100.000",
+    image: "public/images/sakra-image3.jpg",
+    details: {
+      top: "Mandarina, Ciruela, Sándalo",
+      middle: "--, --, --",
+      base: "--, --, --"
+    }
+  },
+  {
+    id: 4,
+    name: "ARI",
+    description: "Notas de bergamota, crema batida y vainilla",
+    price: "100.000",
+    image: "public/images/sakra-image4.jpg",
+    details: {
+      top: "Bergamota, Crema batida, Vainilla",
+      middle: "--, --, --",
+      base: "--, --, --"
+    }
+  }
+];
+---
+
+
+<section id="gallery" class="section bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-light mb-2">Nuestra <span class="font-semibold">Colección</span></h2>
+      <p class="max-w-xl mx-auto text-gray-600">Descubre nuestras fragancias más exclusivas, creadas con los ingredientes más refinados.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {fragrances.map(fragrance => (
+        <div class="group relative">
+          <div class="relative overflow-hidden mb-4">
+            <img 
+              src={fragrance.image} 
+              alt={`Perfume ${fragrance.name}`} 
+              class="w-full h-[400px] object-cover transition-transform group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+              <button 
+                class="px-6 py-2 bg-white text-black opacity-0 group-hover:opacity-100 transition-opacity perfume-details-btn"
+                data-id={fragrance.id}
+              >
+                Ver detalles
+              </button>
+            </div>
+          </div>
+          <h3 class="text-xl font-medium">{fragrance.name}</h3>
+          <p class="text-sm text-gray-600 mb-2">{fragrance.description}</p>
+          <p class="font-semibold">{fragrance.price}</p>
+          
+          <!-- Panel de detalles oculto -->
+          <div 
+            id={`details-${fragrance.id}`} 
+            class="perfume-details absolute left-0 top-0 w-full h-full bg-white p-6 opacity-0 invisible transition-all duration-300 border border-skin flex flex-col"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-medium">{fragrance.name}</h3>
+              <button class="close-details text-2xl">&times;</button>
+            </div>
+            
+            <div class="mt-4 flex-grow overflow-auto">
+              <h4 class="text-lg font-medium mb-2">Pirámide Olfativa</h4>
+              
+              <div class="mb-4">
+                <h5 class="font-medium text-sm text-skin">NOTAS DE SALIDA</h5>
+                <p class="text-sm">{fragrance.details.top}</p>
+              </div>
+              
+              <div class="mb-4">
+                <h5 class="font-medium text-sm text-skin">NOTAS DE CORAZÓN</h5>
+                <p class="text-sm">{fragrance.details.middle}</p>
+              </div>
+              
+              <div class="mb-4">
+                <h5 class="font-medium text-sm text-skin">NOTAS DE FONDO</h5>
+                <p class="text-sm">{fragrance.details.base}</p>
+              </div>
+              
+              <div class="mt-6">
+                <p class="font-semibold">{fragrance.price}</p>
+                <button class="mt-4 px-6 py-2 bg-black text-white hover:bg-skin hover:text-black transition-colors w-full">
+                  Añadir al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Manipulación del DOM para mostrar/ocultar los detalles de los perfumes
+  document.addEventListener('DOMContentLoaded', () => {
+    const detailButtons = document.querySelectorAll('.perfume-details-btn');
+    const closeButtons = document.querySelectorAll('.close-details');
+    
+    // Función para mostrar los detalles
+    detailButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = button.getAttribute('data-id');
+        const detailsPanel = document.getElementById(`details-${id}`);
+        
+        // Ocultar todos los paneles primero
+        document.querySelectorAll('.perfume-details').forEach(panel => {
+          panel.classList.remove('opacity-100', 'visible');
+          panel.classList.add('opacity-0', 'invisible');
+        });
+        
+        // Mostrar el panel seleccionado
+        detailsPanel.classList.remove('opacity-0', 'invisible');
+        detailsPanel.classList.add('opacity-100', 'visible');
+      });
+    });
+    
+    // Función para cerrar los detalles
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const detailsPanel = button.closest('.perfume-details');
+        detailsPanel.classList.remove('opacity-100', 'visible');
+        detailsPanel.classList.add('opacity-0', 'invisible');
+      });
+    });
+  });
+</script>
+
+<style>
+  .perfume-details {
+    z-index: 10;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+  
+  .perfume-details.visible {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>
